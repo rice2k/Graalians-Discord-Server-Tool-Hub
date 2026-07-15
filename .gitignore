@@ -1,0 +1,20 @@
+# Runtime data
+/counter.txt
+/generator_data/*.json
+/generator_data/.htaccess
+/maps/*.zip
+/upload/uploads/
+/webrc/rclog.txt
+/webrc/error_log*
+
+# Imported source archives and temporary extraction folders
+/_drive_imports/
+
+# Local/private config and paste data
+/bin/cfg/conf.php
+/bin/data/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.log
