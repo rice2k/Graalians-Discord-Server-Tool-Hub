@@ -1,22 +1,125 @@
 # Graalians Discord Server Tool Hub
 
-A themed web tool hub for GraalOnline community utilities, built for the Graalians Discord Server. The hub includes browser-based helpers for creating GMAP packages, editing and filling `.nw` levels, converting Graal level formats, formatting GS2 scripts, previewing GANI files, and exporting level previews.
+A public collection of GraalOnline development tools, browser utilities, source code, and preserved working references maintained for the Graalians community.
 
-The interface is styled around an early-2000s GraalOnline/Graal2001 feel: parchment panels, stone-and-gold navigation, pixel-art-friendly previews, and custom background artwork.
+The project covers **GMAP generation**, **`.nw` level utilities**, **GANI animation editing/viewing**, **GS2 formatting**, level previews, conversion tools, and historical/reference implementations that can help with Graal development and preservation.
 
-## Features
+> **Live-site files are included and ready for GitHub Pages.** The repository itself is already public and all downloads below work directly from GitHub. GitHub Pages still has to be enabled for this repository before the `rice2k.github.io` site becomes active.
 
-- Shared Graalians Discord Server theme across all tool pages.
-- Tool hub landing page with clear navigation for every utility.
-- GMAP package generator with zip downloads, README/community links inside the output, statistics, and rate limiting.
-- Graal Level Filler with `.nw` import, live preview, click-to-fill, drag-to-fill, manual region controls, auto-fill, copy, and download.
-- Graal2NW Converter for normalizing `.nw` data and converting simple tile-list inputs.
-- Dungeon Generator for seeded 64 x 64 dungeon starter levels.
-- GS2 Beautify with indentation controls, copy/download, and imported Notepad++ GScript2 syntax highlighting colors.
-- Level Editor for painting `.nw` level data in the browser.
-- GANI Editor for opening, editing, previewing, and exporting `.gani` animation data.
-- NW2PNG renderer for turning `.nw` BOARD data into a PNG preview.
-- Community links for Discord, Reddit, YouTube, WordPress, Twitch, and Instagram.
+## Quick Links
+
+- **Repository:** https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub
+- **Download the complete project:** https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/archive/refs/heads/main.zip
+- **Downloads page:** `downloads.html`
+- **Browser GMAP Generator:** `generatelevels.html`
+- **Planned live URL:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/
+- **Graalians Discord:** https://discord.gg/AeDurPz
+
+## Download Options
+
+| Download | Description |
+| --- | --- |
+| [Complete Tool Hub ZIP](https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/archive/refs/heads/main.zip) | Latest copy of the entire project from the `main` branch. |
+| [GANI Editor working source](https://raw.githubusercontent.com/rice2k/Graalians-Discord-Server-Tool-Hub/main/reference-tools/packages/gani-edit-working-source.zip) | Known-working browser GANI editor source used as a behavioral reference. |
+| [GMAP Generator working source](https://raw.githubusercontent.com/rice2k/Graalians-Discord-Server-Tool-Hub/main/reference-tools/packages/graal-gmap-generator-working-source.zip) | Known-working C# GMAP generator source, tests, project files, and template data. |
+| [GraalViewer2 source](reference-tools/GraalViewer2-source/) | Browseable C# GANI viewer/parser source. |
+| [Reference tool documentation](reference-tools/README.md) | Attribution, package hashes, dependency notes, and intended use. |
+
+Developers can also clone the repository:
+
+```bash
+git clone https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub.git
+```
+
+## Browser Edition
+
+The repository now includes a static GitHub Pages-compatible edition.
+
+### GMAP Level Generator
+
+`generatelevels.html` works without PHP. It creates the package locally in the visitor's browser and downloads the finished ZIP.
+
+A generated package contains:
+
+- A `.gmap` world-layout file.
+- Blank 64 × 64 `.nw` level files.
+- Neighbor links for valid top, bottom, left, and right edges.
+- A package README.
+- Graalians community shortcut files.
+
+A map size of `10` creates a **10 × 10 GMAP consisting of 100 individual `.nw` levels**.
+
+The browser generator does not need to upload the user's generated map files to this repository.
+
+## Tools Included
+
+| Tool | Main file | Status | Purpose |
+| --- | --- | --- | --- |
+| Tool Hub | `index.html` / `index.php` | Browser landing page + PHP edition | Central navigation and project information. |
+| GMAP Generator | `generatelevels.html` / `generatelevels.php` | Browser-ready + PHP edition | Creates linked GMAP starter packages. |
+| Graal Level Filler | `graal-level-filler.php` | PHP edition | Opens or pastes `.nw` data and fills blank tiles or selected regions. |
+| Graal2NW Converter | `graal2nw-converter.php` | PHP edition | Normalizes and converts supported Graal level data to `.nw`. |
+| Dungeon Generator | `dungeon-generator.php` | PHP edition | Generates seeded 64 × 64 dungeon starter levels. |
+| GS2 Beautify | `gs2-beautify.php` | PHP edition | Formats GS2 scripts and provides GScript2-style highlighting. |
+| Level Editor | `level-editor.php` | PHP edition | Browser interface for painting and exporting `.nw` levels. |
+| GANI Editor | `gani-editor.php` | PHP edition + working reference | Opens, edits, previews, and exports `.gani` animation data. |
+| NW2PNG | `nw2png.php` | PHP edition | Renders `.nw` BOARD data to PNG previews. |
+| Downloads | `downloads.html` | Static | Public download page for the complete project and reference tools. |
+
+## Working Reference Implementations
+
+Known-working implementations are kept under [`reference-tools/`](reference-tools/) so the themed Tool Hub can be improved against proven behavior without overwriting the web tools with unrelated desktop/runtime files.
+
+### GANI Editor reference
+
+The supplied browser editor is useful for checking:
+
+- GANI parsing and serialization.
+- Sprite definitions and resource images.
+- Animation frames and direction data.
+- Frame hold timing.
+- Single-direction animations.
+- Loop, freeze, and `SETBACKTO` behavior.
+
+### GraalViewer2 reference
+
+The preserved C# source is useful for checking:
+
+- GANI loading and parsing.
+- Animation frame progression.
+- Sprite rendering.
+- Image/resource loading.
+- Viewer/window behavior.
+
+Generated `bin/` and `obj/` folders were not carried into the reference source. The older project contains legacy SFML.NET reference paths that should be made portable before rebuilding on a modern machine.
+
+### C# GMAP Generator reference
+
+The preserved GMAP source is useful for comparing:
+
+- GMAP dimensions and level ordering.
+- Level filenames.
+- Generated level contents.
+- Neighbor links.
+- Template behavior.
+- Existing test expectations.
+
+## PHP Edition / Local Setup
+
+For the full PHP tool set, use a PHP-capable server such as XAMPP.
+
+1. Download or clone this repository.
+2. Place it under your web server directory, for example XAMPP `htdocs`.
+3. Open `index.php` through the local web server.
+4. Enable PHP `ZipArchive` for the server-side GMAP ZIP generator.
+
+Example:
+
+```text
+http://127.0.0.1/Graalians-Discord-Server-Tool-Hub/index.php
+```
+
+Runtime-generated maps and statistics are intentionally kept separate from the public source repository.
 
 ## Screenshots
 
@@ -36,119 +139,23 @@ The interface is styled around an early-2000s GraalOnline/Graal2001 feel: parchm
 
 ![GS2 Beautify](docs/screenshots/gs2-beautify.png)
 
-## Tools Included
+## Project Topics
 
-| Tool | File | What it does |
-| --- | --- | --- |
-| Tool Hub | `index.php` | Landing page for all Graalians tools. |
-| GMAP Generator | `generatelevels.php` | Creates a square `.gmap` package with linked blank `.nw` levels and a zip download. |
-| Graal Level Filler | `graal-level-filler.php` | Fills blank tiles or selected regions in `.nw` level data. |
-| Graal2NW Converter | `graal2nw-converter.php` | Helps normalize or convert Graal level text into `.nw` output. |
-| Dungeon Generator | `dungeon-generator.php` | Builds a seeded dungeon starter level. |
-| GS2 Beautify | `gs2-beautify.php` | Formats GS2 code and shows imported GScript2-style highlighting. |
-| Level Editor | `level-editor.php` | Paints 64 x 64 `.nw` level data directly in the browser. |
-| GANI Editor | `gani-editor.php` | Edits and previews Graal `.gani` animation files. |
-| NW2PNG | `nw2png.php` | Renders `.nw` BOARD data as a PNG image. |
+The repository is tagged for easier discovery with:
 
-## Working Reference Implementations
+`graal` · `graalonline` · `graalians` · `gmap` · `gani` · `nw-levels` · `gs2` · `level-editor` · `javascript` · `php` · `tool-hub`
 
-Known-working source supplied for this project is preserved under [`reference-tools/`](reference-tools/). These references are kept separate from the live themed PHP pages so proven behavior can be compared and ported without accidentally replacing the browser Hub with unrelated desktop/runtime code.
-
-| Reference | Use it to verify |
-| --- | --- |
-| `gani-edit-working-source.zip` | GANI parsing, resources, sprites, frame timing, single-direction animations, looping, freezing, setback behavior, and browser editing. |
-| [`GraalViewer2-source/`](reference-tools/GraalViewer2-source/) | Desktop GANI loading/viewing behavior, sprite rendering, frame stepping, file watching, and image/resource handling. |
-| `graal-gmap-generator-working-source.zip` | GMAP layout, level naming/content generation, templates, and expected behavior covered by its tests. |
-
-See [`reference-tools/README.md`](reference-tools/README.md) for source notes, package hashes, build/dependency details, and attribution information.
-
-## How It Works
-
-### Shared Tool System
-
-The shared layout, navigation, community links, and common page helpers live in `tools_common.php`. Most tool pages call into that file so they all use the same header, footer, navigation, and theme.
-
-The shared CSS lives in `graalians-tools.css`. It controls the Graal-inspired page background, header, navigation, panels, forms, buttons, editor surfaces, preview canvases, footer, and responsive behavior.
-
-The shared browser-side helper library lives in `graal-tools.js`. It handles common level operations such as:
-
-- Parsing `.nw` `BOARD` rows.
-- Serializing updated `.nw` levels.
-- Converting Graal tile codes to numeric tile indexes and back.
-- Drawing 64 x 64 previews on canvas.
-- Downloading text files, blobs, and PNG previews.
-- Copying output text.
-- Recording download events for simple statistics.
-
-### GMAP Generator
-
-The GMAP generator accepts a package name and a square map size. A map size of `10` means the generator builds a `10 x 10` GMAP layout, which creates `100` blank `.nw` level files.
-
-Each `.nw` file is still a normal `64 x 64` tile level. The `.gmap` file does not create one giant level file. Instead, it lists the level files in rows so Graal can treat the grid as one connected overworld.
-
-The generator keeps the GMAP square because it makes the level order predictable, keeps edge links consistent, and avoids uneven rows that are easier to break when moving or renaming files.
-
-Generated zip files include:
-
-- The `.gmap` file.
-- Blank `.nw` levels with edge links.
-- A README with community links.
-- Shortcut/link files for Graalians community pages.
-
-The generator also includes simple anti-abuse controls:
-
-- Generation rate limit.
-- Download rate limit.
-- Visit counting cooldown.
-- Temporary cleanup for generated zip files.
-
-### Level Filler
-
-The Level Filler reads `.nw` level text, parses layer-0 `BOARD` rows, and displays the level on a canvas. Users can:
-
-- Open a `.nw` file.
-- Paste `.nw` text.
-- Start a new blank `.nw` file.
-- Click one tile to fill it.
-- Drag across the preview to fill a rectangle.
-- Use manual X, Y, Width, and Height fields.
-- Fill only blank tiles or overwrite the selected region.
-- Download or copy the updated `.nw` output.
-
-### GS2 Beautify
-
-The GS2 Beautify page formats script text in the browser. It also includes a live highlighting layer based on the imported Notepad++ GScript2 syntax profile. The highlighter colors keywords, constants, comments, strings, numbers, operators, and punctuation to make pasted scripts easier to read before and after formatting.
-
-## Setup
-
-1. Put this folder in a PHP-capable web server, such as XAMPP under `htdocs`.
-2. Open the hub in a browser:
-
-   ```text
-   http://127.0.0.1/tools/index.php
-   ```
-
-3. For GMAP zip generation, make sure PHP has `ZipArchive` enabled.
-4. The app creates runtime folders/files as needed:
-
-   - `maps/` for temporary generated zip packages.
-   - `generator_data/` for visit, generation, and download statistics.
-
-Runtime data is ignored by Git so local counts, generated zips, and private server files are not uploaded.
-
-## Suggested GitHub Topics
-
-`graal`, `graalonline`, `graalians`, `gmap`, `nw-levels`, `gs2`, `gani`, `level-editor`, `php`, `javascript`, `tool-hub`
+Useful search phrases include **Graal tools**, **GraalOnline development tools**, **GANI editor**, **GMAP generator**, **Graal NW level editor**, **GS2 formatter**, and **Graal level utilities**.
 
 ## Project Structure
 
 ```text
 .
-├── index.php
-├── tools_common.php
-├── graalians-tools.css
-├── graal-tools.js
-├── generatelevels.php
+├── index.html                  # Static/public Tool Hub
+├── downloads.html              # Public download center
+├── generatelevels.html         # Static browser GMAP generator
+├── index.php                   # PHP Tool Hub
+├── generatelevels.php          # PHP GMAP generator
 ├── graal-level-filler.php
 ├── graal2nw-converter.php
 ├── dungeon-generator.php
@@ -156,9 +163,10 @@ Runtime data is ignored by Git so local counts, generated zips, and private serv
 ├── level-editor.php
 ├── gani-editor.php
 ├── nw2png.php
-├── tool_event.php
-├── images/
-├── docs/screenshots/
+├── tools_common.php
+├── graal-tools.js
+├── graalians-tools.css
+├── docs/
 └── reference-tools/
     ├── README.md
     ├── GraalViewer2-source/
@@ -167,9 +175,11 @@ Runtime data is ignored by Git so local counts, generated zips, and private serv
         └── graal-gmap-generator-working-source.zip
 ```
 
-## TODO
+## Project Status
 
-See `TODO.md` for planned improvements and future tool ideas.
+The repository is public and downloadable. The static browser version and GitHub Pages deployment workflow are committed to `main`. The GitHub repository currently reports Pages as disabled, so the Pages publishing source must be enabled in the repository's **Settings → Pages** before the public `github.io` URL can serve the site.
+
+Once enabled, pushes to `main` are configured to redeploy the static site automatically.
 
 ## Community
 
@@ -179,3 +189,11 @@ See `TODO.md` for planned improvements and future tool ideas.
 - WordPress: https://graaldisocrd.wordpress.com/
 - Twitch: https://www.twitch.tv/rice2k
 - Instagram: https://www.instagram.com/Graal_Discord/
+
+## Notes on Third-Party Code
+
+Reference sources are preserved for research, compatibility, and development comparison. No new license is asserted over third-party code. Preserve original notices and verify applicable upstream redistribution terms before republishing or relicensing third-party material.
+
+## Contributing
+
+Bug reports, compatibility findings, documentation corrections, and improvements to Graal file-format handling are welcome through the GitHub repository.
