@@ -4,15 +4,15 @@ A public collection of GraalOnline development tools, browser utilities, source 
 
 The project covers **GMAP generation**, **`.nw` level utilities**, **GANI animation editing/viewing**, **GS2 formatting**, level previews, conversion tools, and historical/reference implementations that can help with Graal development and preservation.
 
-> **Live-site files are included and ready for GitHub Pages.** The repository itself is already public and all downloads below work directly from GitHub. GitHub Pages still has to be enabled for this repository before the `rice2k.github.io` site becomes active.
+> **Live site:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/
 
 ## Quick Links
 
+- **Live Tool Hub:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/
+- **Live GMAP Generator:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/generatelevels.html
+- **Live Downloads Page:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/downloads.html
 - **Repository:** https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub
 - **Download the complete project:** https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/archive/refs/heads/main.zip
-- **Downloads page:** `downloads.html`
-- **Browser GMAP Generator:** `generatelevels.html`
-- **Planned live URL:** https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/
 - **Graalians Discord:** https://discord.gg/AeDurPz
 
 ## Download Options
@@ -33,11 +33,11 @@ git clone https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub.git
 
 ## Browser Edition
 
-The repository now includes a static GitHub Pages-compatible edition.
+The repository includes a static GitHub Pages edition so visitors can use supported tools without installing PHP.
 
 ### GMAP Level Generator
 
-`generatelevels.html` works without PHP. It creates the package locally in the visitor's browser and downloads the finished ZIP.
+`generatelevels.html` works entirely in the browser. It creates the package locally and downloads the finished ZIP.
 
 A generated package contains:
 
@@ -49,14 +49,14 @@ A generated package contains:
 
 A map size of `10` creates a **10 × 10 GMAP consisting of 100 individual `.nw` levels**.
 
-The browser generator does not need to upload the user's generated map files to this repository.
+The browser generator does not upload the user's generated map files to this repository.
 
 ## Tools Included
 
 | Tool | Main file | Status | Purpose |
 | --- | --- | --- | --- |
-| Tool Hub | `index.html` / `index.php` | Browser landing page + PHP edition | Central navigation and project information. |
-| GMAP Generator | `generatelevels.html` / `generatelevels.php` | Browser-ready + PHP edition | Creates linked GMAP starter packages. |
+| Tool Hub | `index.html` / `index.php` | Live static + PHP edition | Central navigation and project information. |
+| GMAP Generator | `generatelevels.html` / `generatelevels.php` | Live static + PHP edition | Creates linked GMAP starter packages. |
 | Graal Level Filler | `graal-level-filler.php` | PHP edition | Opens or pastes `.nw` data and fills blank tiles or selected regions. |
 | Graal2NW Converter | `graal2nw-converter.php` | PHP edition | Normalizes and converts supported Graal level data to `.nw`. |
 | Dungeon Generator | `dungeon-generator.php` | PHP edition | Generates seeded 64 × 64 dungeon starter levels. |
@@ -64,7 +64,7 @@ The browser generator does not need to upload the user's generated map files to 
 | Level Editor | `level-editor.php` | PHP edition | Browser interface for painting and exporting `.nw` levels. |
 | GANI Editor | `gani-editor.php` | PHP edition + working reference | Opens, edits, previews, and exports `.gani` animation data. |
 | NW2PNG | `nw2png.php` | PHP edition | Renders `.nw` BOARD data to PNG previews. |
-| Downloads | `downloads.html` | Static | Public download page for the complete project and reference tools. |
+| Downloads | `downloads.html` | Live static | Public download page for the complete project and reference tools. |
 
 ## Working Reference Implementations
 
@@ -151,9 +151,9 @@ Useful search phrases include **Graal tools**, **GraalOnline development tools**
 
 ```text
 .
-├── index.html                  # Static/public Tool Hub
-├── downloads.html              # Public download center
-├── generatelevels.html         # Static browser GMAP generator
+├── index.html                  # Live static Tool Hub
+├── downloads.html              # Live public download center
+├── generatelevels.html         # Live browser GMAP generator
 ├── index.php                   # PHP Tool Hub
 ├── generatelevels.php          # PHP GMAP generator
 ├── graal-level-filler.php
@@ -177,9 +177,9 @@ Useful search phrases include **Graal tools**, **GraalOnline development tools**
 
 ## Project Status
 
-The repository is public and downloadable. The static browser version and GitHub Pages deployment workflow are committed to `main`. The GitHub repository currently reports Pages as disabled, so the Pages publishing source must be enabled in the repository's **Settings → Pages** before the public `github.io` URL can serve the site.
+The repository is public and downloadable. GitHub Pages is enabled, a `gh-pages` publishing branch is present, and GitHub's Pages build completed successfully on September 16, 2026. The site is published at:
 
-Once enabled, pushes to `main` are configured to redeploy the static site automatically.
+https://rice2k.github.io/Graalians-Discord-Server-Tool-Hub/
 
 ## Community
 
