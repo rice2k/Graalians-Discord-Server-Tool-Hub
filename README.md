@@ -57,7 +57,7 @@ Known-working source supplied for this project is preserved under [`reference-to
 | Reference | Use it to verify |
 | --- | --- |
 | `gani-edit-working-source.zip` | GANI parsing, resources, sprites, frame timing, single-direction animations, looping, freezing, setback behavior, and browser editing. |
-| `GraalViewer2-working-source.zip` | Desktop GANI loading/viewing behavior and animation rendering logic. |
+| [`GraalViewer2-source/`](reference-tools/GraalViewer2-source/) | Desktop GANI loading/viewing behavior, sprite rendering, frame stepping, file watching, and image/resource handling. |
 | `graal-gmap-generator-working-source.zip` | GMAP layout, level naming/content generation, templates, and expected behavior covered by its tests. |
 
 See [`reference-tools/README.md`](reference-tools/README.md) for source notes, package hashes, build/dependency details, and attribution information.
@@ -161,9 +161,9 @@ Runtime data is ignored by Git so local counts, generated zips, and private serv
 ├── docs/screenshots/
 └── reference-tools/
     ├── README.md
+    ├── GraalViewer2-source/
     └── packages/
         ├── gani-edit-working-source.zip
-        ├── GraalViewer2-working-source.zip
         └── graal-gmap-generator-working-source.zip
 ```
 
