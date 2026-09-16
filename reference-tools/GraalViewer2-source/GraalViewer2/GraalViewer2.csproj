@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CA26856-2784-445D-9F66-C820F971BE4B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraalViewer2</RootNamespace>
+    <AssemblyName>GraalViewer2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>animicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="sfmlnet-audio"><HintPath>F:\Development\BitBucket-gitrepo\PiRAT\Source\PiRAT\sfmlnet-audio.dll</HintPath></Reference>
+    <Reference Include="sfmlnet-graphics"><HintPath>F:\Development\BitBucket-gitrepo\PiRAT\Source\PiRAT\sfmlnet-graphics.dll</HintPath></Reference>
+    <Reference Include="sfmlnet-window"><HintPath>F:\Development\BitBucket-gitrepo\PiRAT\Source\PiRAT\sfmlnet-window.dll</HintPath></Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gani.cs" />
+    <Compile Include="GaniViewer.cs"><SubType>UserControl</SubType></Compile>
+    <Compile Include="GaniViewer.Designer.cs"><DependentUpon>GaniViewer.cs</DependentUpon></Compile>
+    <Compile Include="GVWindow.cs"><SubType>Form</SubType></Compile>
+    <Compile Include="GVWindow.Designer.cs"><DependentUpon>GVWindow.cs</DependentUpon></Compile>
+    <Compile Include="main.cs" />
+    <Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DesignTime>True</DesignTime><DependentUpon>Resources.resx</DependentUpon></Compile>
+    <Compile Include="texLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GaniViewer.resx"><DependentUpon>GaniViewer.cs</DependentUpon></EmbeddedResource>
+    <EmbeddedResource Include="GVWindow.resx"><DependentUpon>GVWindow.cs</DependentUpon></EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup><Content Include="animicon.ico" /></ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client"><Visible>False</Visible><ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName><Install>true</Install></BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5"><Visible>False</Visible><ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName><Install>false</Install></BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1"><Visible>False</Visible><ProductName>.NET Framework 3.5 SP1</ProductName><Install>false</Install></BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1"><Visible>False</Visible><ProductName>Windows Installer 3.1</ProductName><Install>true</Install></BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
