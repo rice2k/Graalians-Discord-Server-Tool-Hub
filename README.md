@@ -50,6 +50,18 @@ The interface is styled around an early-2000s GraalOnline/Graal2001 feel: parchm
 | GANI Editor | `gani-editor.php` | Edits and previews Graal `.gani` animation files. |
 | NW2PNG | `nw2png.php` | Renders `.nw` BOARD data as a PNG image. |
 
+## Working Reference Implementations
+
+Known-working source supplied for this project is preserved under [`reference-tools/`](reference-tools/). These references are kept separate from the live themed PHP pages so proven behavior can be compared and ported without accidentally replacing the browser Hub with unrelated desktop/runtime code.
+
+| Reference | Use it to verify |
+| --- | --- |
+| `gani-edit-working-source.zip` | GANI parsing, resources, sprites, frame timing, single-direction animations, looping, freezing, setback behavior, and browser editing. |
+| `GraalViewer2-working-source.zip` | Desktop GANI loading/viewing behavior and animation rendering logic. |
+| `graal-gmap-generator-working-source.zip` | GMAP layout, level naming/content generation, templates, and expected behavior covered by its tests. |
+
+See [`reference-tools/README.md`](reference-tools/README.md) for source notes, package hashes, build/dependency details, and attribution information.
+
 ## How It Works
 
 ### Shared Tool System
@@ -146,7 +158,13 @@ Runtime data is ignored by Git so local counts, generated zips, and private serv
 ├── nw2png.php
 ├── tool_event.php
 ├── images/
-└── docs/screenshots/
+├── docs/screenshots/
+└── reference-tools/
+    ├── README.md
+    └── packages/
+        ├── gani-edit-working-source.zip
+        ├── GraalViewer2-working-source.zip
+        └── graal-gmap-generator-working-source.zip
 ```
 
 ## TODO
