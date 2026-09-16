@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create Graal GMAP starter packages entirely in your browser.">
+  <title>GMAP Level Generator - Graalians Discord Server Tools</title>
+  <link rel="stylesheet" href="graalians-tools.css">
+  <style>
+    .progress-wrap{display:none;margin-top:1rem}.progress-track{height:12px;border-radius:999px;overflow:hidden;background:rgba(0,0,0,.25)}.progress-bar{height:100%;width:0;background:currentColor}.preview-grid{display:grid;gap:2px;max-width:420px;aspect-ratio:1}.preview-cell{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.06)}
+  </style>
+</head>
+<body>
+<header class="site-header"><div class="shell header-inner"><a class="brand-mark" href="index.html"><i class="brand-gem" aria-hidden="true"></i><span>Graalians Discord Server</span></a><nav class="site-nav"><a href="index.html">Tools Home</a><a class="is-current" href="generatelevels.html">GMAP Generator</a></nav></div></header>
+<main>
+<section class="page-hero compact"><div class="shell"><p class="eyebrow">Live browser tool</p><h1>GMAP Level Generator</h1><p>Create a square GMAP package with linked blank .nw levels. Everything is generated locally in your browser.</p></div></section>
+<section class="shell tool-workspace">
+  <div class="tool-panel">
+    <h2>Create a GMAP package</h2>
+    <div class="form-grid">
+      <div class="field"><label for="prefix">Package name</label><input id="prefix" value="graalians_map" maxlength="32" autocomplete="off"><p class="small-help">Letters, numbers, dashes, and underscores only.</p></div>
+      <div class="field"><label for="size">Map size</label><input id="size" type="number" min="1" max="40" value="10"><p class="small-help">10 means 10 x 10 = 100 individual .nw levels.</p></div>
+    </div>
+    <div class="actions"><button class="button" id="generate" type="button">Generate ZIP</button><button class="button secondary" id="reset" type="button">Reset</button></div>
+    <div class="tool-status-line" id="status">Ready. No files leave your browser.</div>
+    <div class="progress-wrap" id="progressWrap"><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div><p class="small-help" id="progressText">Preparing…</p></div>
+  </div>
+  <aside>
+    <div class="preview-panel"><h2>Grid preview</h2><div class="preview-grid" id="grid"></div><div class="metric-row"><div class="metric"><strong id="levelCount">100</strong><span>Levels</span></div><div class="metric"><strong id="dimension">10×10</strong><span>GMAP</span></div></div></div>
+    <div class="source-panel"><h2>Package contents</h2><ul class="instruction-list"><li><code>.gmap</code> world layout</li><li>Blank 64 x 64 <code>.nw</code> levels</li><li>Neighbor links on each valid edge</li><li>README and Graalians community shortcuts</li></ul></div>
+  </aside>
+</section>
+</main>
+<footer class="site-footer"><div class="shell"><p>Graalians Discord Server Tool Hub</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+(() => {
+  const prefixEl = document.getElementById('prefix'), sizeEl = document.getElementById('size');
+  const status = document.getElementById('status'), grid = document.getElementById('grid');
+  const levelCount = document.getElementById('levelCount'), dimension = document.getElementById('dimension');
+  const progressWrap = document.getElementById('progressWrap'), progressBar = document.getElementById('progressBar'), progressText = document.getElementById('progressText');
+  const community = {
+    'Join the Graalians Discord Server.url':'https://discord.gg/AeDurPz',
+    'Visit r-graal on Reddit.url':'https://reddit.com/r/graal',
+    'Watch Graal Discord on YouTube.url':'https://www.youtube.com/@GraalDiscord',
+    'Read Graalians Discord Wordpress.url':'https://graaldisocrd.wordpress.com/',
+    'Watch rice2k on Twitch.url':'https://www.twitch.tv/rice2k',
+    'Follow Graal Discord on Instagram.url':'https://www.instagram.com/Graal_Discord/'
+  };
+  const validPrefix = v => /^[A-Za-z0-9][A-Za-z0-9_-]{0,31}$/.test(v);
+  const cleanSize = () => Math.max(1, Math.min(40, parseInt(sizeEl.value,10)||10));
+  const fileName = (p,i) => `${p}_${i}.nw`;
+  function baseLevel(){ const rows=['GLEVNW01']; const blank='AA'.repeat(64); for(let y=0;y<64;y++) rows.push(`BOARD 0 ${y} 64 0 ${blank}`); return rows.join('\n')+'\n'; }
+  function links(p,i,w,h){ const x=i%w,y=Math.floor(i/w); let s=''; if(y<h-1)s+=`LINK ${fileName(p,i+w)} 0 63 64 1 playerx 0\n`; if(x<w-1)s+=`LINK ${fileName(p,i+1)} 63 0 1 64 0 playery\n`; if(y>0)s+=`LINK ${fileName(p,i-w)} 0 0 64 1 playerx 61\n`; if(x>0)s+=`LINK ${fileName(p,i-1)} 0 0 1 64 61 playery\n`; return s; }
+  function gmap(p,w,h){ let out=`GRMAP001\nWIDTH ${w}\nHEIGHT ${h}\nLEVELNAMES\n`; for(let y=0;y<h;y++){ const row=[]; for(let x=0;x<w;x++) row.push(`"${fileName(p,y*w+x)}"`); out+=row.join(',')+'\n'; } return out+'LEVELNAMESEND\n'; }
+  function readme(p,w,h){ const n=w*h; return `Graalians Discord Server Level Generator\r\n=========================================\r\n\r\nPackage name: ${p}\r\nGMAP size: ${w} x ${h}\r\nLevel files: ${n}\r\nBase level size: 64 x 64 tiles per .nw level\r\n\r\nThis package was generated entirely in your browser from the Graalians Discord Server Tool Hub.\r\nEach .nw file contains blank BOARD data and links to valid neighboring levels.\r\n`; }
+  function updatePreview(){ const s=cleanSize(); sizeEl.value=s; levelCount.textContent=(s*s).toLocaleString(); dimension.textContent=`${s}×${s}`; grid.innerHTML=''; const shown=Math.min(s,16); grid.style.gridTemplateColumns=`repeat(${shown},1fr)`; const cells=Math.min(s*s,256); for(let i=0;i<cells;i++){ const d=document.createElement('div'); d.className='preview-cell'; d.title=`Level ${i}`; grid.appendChild(d); } }
+  function downloadBlob(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500); }
+  async function generate(){ const p=(prefixEl.value||'').trim()||'graalians_map'; const s=cleanSize(); if(!validPrefix(p)){ status.textContent='Use 1–32 characters: letters, numbers, dashes, and underscores only.'; return; } if(typeof JSZip==='undefined'){ status.textContent='ZIP library failed to load. Check your connection and refresh.'; return; }
+    prefixEl.value=p; const total=s*s; const zip=new JSZip(); const base=baseLevel(); progressWrap.style.display='block'; progressBar.style.width='0%'; status.textContent=`Building ${total.toLocaleString()} levels…`;
+    for(let i=0;i<total;i++){ zip.file(fileName(p,i),base+links(p,i,s,s)); if(i%50===0){ const pct=Math.round((i/total)*70); progressBar.style.width=pct+'%'; progressText.textContent=`Adding levels ${i.toLocaleString()} / ${total.toLocaleString()}`; await new Promise(r=>setTimeout(r,0)); } }
+    zip.file(`${p}.gmap`,gmap(p,s,s)); zip.file('README - Graalians Discord Server Level Generator.txt',readme(p,s,s));
+    zip.file('Community Links - Graalians Discord Server.txt',Object.values(community).join('\r\n'));
+    for(const [name,url] of Object.entries(community)) zip.file(name,`[InternetShortcut]\r\nURL=${url}\r\n`);
+    progressText.textContent='Compressing ZIP…';
+    const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}}, meta=>{ const pct=70+Math.round(meta.percent*.30); progressBar.style.width=Math.min(100,pct)+'%'; });
+    const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/T/,'-').slice(0,15); downloadBlob(blob,`${p}-${stamp}.zip`); progressBar.style.width='100%'; progressText.textContent='Complete'; status.textContent=`Package ready: ${total.toLocaleString()} .nw levels plus ${p}.gmap.`;
+  }
+  document.getElementById('generate').addEventListener('click',generate); document.getElementById('reset').addEventListener('click',()=>{prefixEl.value='graalians_map';sizeEl.value=10;status.textContent='Ready. No files leave your browser.';progressWrap.style.display='none';updatePreview();}); sizeEl.addEventListener('input',updatePreview); updatePreview();
+})();
+</script>
+</body>
+</html>
