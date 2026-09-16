@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Live Graalians Discord Server browser tools for GraalOnline files and development utilities.">
+  <meta name="description" content="Free GraalOnline development tools from the Graalians Discord Server: GMAP generation, GANI references, NW level utilities, GS2 tools, and downloadable source code.">
+  <meta name="keywords" content="Graal,GraalOnline,Graalians,GMAP,GANI,NW levels,GS2,Graal tools,level editor,Graal development,free Graal tools">
+  <meta name="author" content="Rice2k / Graalians Discord Server">
+  <meta property="og:title" content="Graalians Discord Server Tool Hub">
+  <meta property="og:description" content="Free browser and source-code tools for GraalOnline development and preservation.">
+  <meta property="og:type" content="website">
   <title>Graalians Discord Server Tool Hub</title>
   <link rel="stylesheet" href="graalians-tools.css">
   <style>
     .live-banner{margin:1rem 0 0;padding:.85rem 1rem;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(20,50,26,.72)}
     .live-banner strong{color:#dff7c9}.tool-card.is-disabled{opacity:.78;cursor:default}.tool-card.is-disabled:hover{transform:none}
-    .tool-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}.mini-link{font-size:.9rem;text-decoration:underline}
+    .tool-actions,.hero-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}.mini-link{font-size:.9rem;text-decoration:underline}.tag-cloud{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}.tag-cloud span{padding:.2rem .5rem;border:1px solid rgba(255,255,255,.15);border-radius:999px;font-size:.8rem}
   </style>
 </head>
 <body>
@@ -19,6 +24,7 @@
     <nav class="site-nav" aria-label="Main navigation">
       <a class="is-current" href="index.html">Tools Home</a>
       <a href="generatelevels.html">GMAP Generator</a>
+      <a href="downloads.html">Downloads</a>
       <a href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub">GitHub</a>
     </nav>
   </div>
@@ -28,27 +34,30 @@
   <div class="shell">
     <p class="eyebrow">Graalians Discord Server</p>
     <h1>Graal Tools Hub</h1>
-    <p>Live browser tools for creating, editing, previewing, and preserving Graal development files.</p>
-    <div class="live-banner"><strong>GitHub Pages edition:</strong> this version runs without PHP. Tools marked Live work directly in your browser.</div>
+    <p>Free browser tools, source code, and preserved working references for GraalOnline level building, GMAPs, GANI animations, GS2 scripts, and development utilities.</p>
+    <div class="hero-actions"><a class="button" href="generatelevels.html">Open GMAP Generator</a><a class="button secondary" href="downloads.html">Download Tools</a><a class="button secondary" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/archive/refs/heads/main.zip">Download Full Project ZIP</a></div>
+    <div class="live-banner"><strong>Public project:</strong> the repository and source downloads are available to everyone. The static edition is ready for GitHub Pages once Pages is enabled for the repository.</div>
   </div>
 </section>
 <section class="shell content-band">
   <div>
     <div class="tools-grid" aria-label="Available tools">
-      <a class="tool-card" href="generatelevels.html"><span class="tool-status">Live</span><h2>GMAP Level Generator</h2><p>Create square GMAP starter packages with linked blank .nw levels and download the complete ZIP in your browser.</p></a>
-      <div class="tool-card is-disabled"><span class="tool-status soon">Reference source</span><h2>GANI Editor</h2><p>The supplied known-working browser GANI editor is preserved in the repository and is the next static tool to integrate into the themed Hub.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/tree/main/reference-tools">View working reference</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Graal Level Filler</h2><p>The original working PHP/browser implementation remains in the repository while its static Pages port is prepared.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/graal-level-filler.php">View source</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Graal2NW Converter</h2><p>The original converter remains available in source form.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/graal2nw-converter.php">View source</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Dungeon Generator</h2><p>The original dungeon generator remains available in source form.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/dungeon-generator.php">View source</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>GS2 Beautify</h2><p>The original GS2 formatter remains available in source form.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/gs2-beautify.php">View source</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Level Editor</h2><p>The original level editor remains available in source form.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/level-editor.php">View source</a></div></div>
-      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>NW2PNG</h2><p>The original NW renderer remains available in source form.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/nw2png.php">View source</a></div></div>
+      <a class="tool-card" href="generatelevels.html"><span class="tool-status">Browser ready</span><h2>GMAP Level Generator</h2><p>Create square GMAP starter packages with linked blank <code>.nw</code> levels and download the complete ZIP directly in your browser.</p></a>
+      <a class="tool-card" href="downloads.html"><span class="tool-status">Downloads</span><h2>Tool Downloads</h2><p>Download the complete project, known-working GANI editor source, GMAP generator source, and browse GraalViewer2 reference code.</p></a>
+      <div class="tool-card is-disabled"><span class="tool-status soon">Reference source</span><h2>GANI Editor</h2><p>A known-working browser GANI editor is preserved as a reference for sprite resources, animation frames, timing, loops, directions, and setback behavior.</p><div class="tool-actions"><a class="mini-link" href="https://raw.githubusercontent.com/rice2k/Graalians-Discord-Server-Tool-Hub/main/reference-tools/packages/gani-edit-working-source.zip">Download source ZIP</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Graal Level Filler</h2><p>Import or paste <code>.nw</code> levels, fill blank tiles or selected areas, preview changes, and export updated levels.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/graal-level-filler.php">View source</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Graal2NW Converter</h2><p>Normalize Graal level data and convert supported level text into <code>.nw</code> output.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/graal2nw-converter.php">View source</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Dungeon Generator</h2><p>Generate seeded 64×64 dungeon starter levels with rooms, corridors, previews, and NW export.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/dungeon-generator.php">View source</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>GS2 Beautify</h2><p>Format GS2 scripts with indentation controls and GScript2-style syntax highlighting.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/gs2-beautify.php">View source</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>Level Editor</h2><p>Paint and edit 64×64 Graal <code>.nw</code> level data and export level or PNG output.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/level-editor.php">View source</a></div></div>
+      <div class="tool-card is-disabled"><span class="tool-status soon">PHP edition</span><h2>NW2PNG</h2><p>Render Graal <code>.nw</code> BOARD data as an image preview with optional tileset support.</p><div class="tool-actions"><a class="mini-link" href="https://github.com/rice2k/Graalians-Discord-Server-Tool-Hub/blob/main/nw2png.php">View source</a></div></div>
     </div>
   </div>
   <aside class="community-panel">
-    <h2>Live edition</h2>
-    <p>The GitHub Pages build is static, so server-side PHP is not executed. The GMAP generator was rewritten to build ZIPs locally in the browser, and the supplied working GANI editor is preserved as the baseline for the next browser-tool port.</p>
-    <p class="tool-note">Your files stay on your computer while these browser tools run; generation and editing happen client-side.</p>
+    <h2>About the project</h2>
+    <p>The Tool Hub collects modern browser utilities, PHP tools, and known-working historical/reference implementations useful to GraalOnline developers and preservation work.</p>
+    <p class="tool-note">The browser GMAP generator builds files locally. Generated map data is not uploaded to this project.</p>
+    <h3>Tags</h3><div class="tag-cloud"><span>graal</span><span>graalonline</span><span>graalians</span><span>gmap</span><span>gani</span><span>nw-levels</span><span>gs2</span><span>level-editor</span><span>javascript</span><span>php</span></div>
   </aside>
 </section>
 </main>
