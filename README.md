@@ -197,3 +197,9 @@ Reference sources are preserved for research, compatibility, and development com
 ## Contributing
 
 Bug reports, compatibility findings, documentation corrections, and improvements to Graal file-format handling are welcome through the GitHub repository.
+
+## Related Rice2K projects
+
+Discover related community tooling for **GraalOnline GMAP**, **GANI**, **NW levels**, and **Graal Script 2 (GS2)**.
+
+[GS2 Scripts](https://github.com/rice2k/gs2-scripts) · [Graal Level Viewer](https://github.com/rice2k/Graal-Level-Viewer) · [Search GraalOnline projects](https://rice2k.github.io/rice2k-startdeck/projects/?category=GraalOnline)
